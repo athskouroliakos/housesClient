@@ -1,5 +1,4 @@
-// HousesList.tsx
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import HouseCard from './HouseCard';
 
@@ -19,8 +18,8 @@ const HousesList: React.FC<{ name?: string }> = ({ name }) => {
     const fetchData = async () => {
       try {
         const url = name
-          ? `https://wizard-world-api.herokuapp.com/houses?name=${name}`
-          : 'https://wizard-world-api.herokuapp.com/houses';
+          ? `https://houses-data.vercel.app/houses?name=${name}`
+          : 'https://houses-data.vercel.app/houses';
 
         const response = await axios.get(url);
         console.log('Response data:', response.data);
