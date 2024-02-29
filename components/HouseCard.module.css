@@ -1,0 +1,47 @@
+/* HouseCard.module.css */
+.house-card {
+  position: relative;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 8px;
+  font-family: Verdana, sans-serif;
+  border: 1px solid #ddd; /* Border around the entire box */
+  width: 50%; /* Set the width to 50% of the container */
+}
+
+.house-card::before {
+  content: '';
+  position: absolute;
+  top: 20px; /* Adjust the distance from the top */
+  left: 0;
+  width: 100%; /* Set the width to 100% for the full width gradient bar */
+  height: 5px; /* Adjust the height as needed */
+}
+
+.animal {
+  position: absolute;
+  top: 5px;
+  right: 10px; /* Adjusted to top right corner */
+}
+
+.gradient-bar {
+  width: 100%;
+  height: 25px;
+  background: linear-gradient(to right, white 0%, rgb(10, 9, 9) 100%);
+}
+
+.gryffindor {
+  background: linear-gradient(to right, #740001 0%, #000000 100%);
+}
+
+.slytherin {
+  background: linear-gradient(to right, #1a472a 0%, #eeeded 100%);
+}
+
+.ravenclaw {
+  background: linear-gradient(to right, #0e1a40 0%, #000000 100%);
+}
+
+.hufflepuff {
+  background: linear-gradient(to right, #ecb939 0%, #000000 100%);
+}
