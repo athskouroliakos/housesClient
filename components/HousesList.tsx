@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import HouseCard from './HouseCard';
+import Spinner from './Spinner';
 
 interface House {
   id: string;
@@ -22,33 +23,26 @@ const HousesList: React.FC<{ name?: string }> = ({ name }) => {
           : 'https://houses-data.vercel.app/houses';
 
         const response = await axios.get(url);
-        console.log('Response data:', response.data);
         setHouses(response.data);
-        setLoading(false);
       } catch (error) {
         console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchData();
   }, [name]);
 
-  if (loading) {
-    return <div className="my-4">Loading...</div>;
-  }
+
 
   return (
     <div>
-      {houses.map((house) => (
-        <div key={house.id}>
-          <HouseCard
-            name={house.name}
-            color={house.color}
-            founder={house.founder}
-            animal={house.animal}
-          />
-        </div>
-      ))}
+      {loading ? (
+        <Spinner />
+      ) : (
+        houses.map((house) => <HouseCard key={house.id} {...house} />)
+      )}
     </div>
   );
 };

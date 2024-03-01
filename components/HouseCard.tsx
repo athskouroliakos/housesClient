@@ -8,19 +8,19 @@ interface HouseCardProps {
   animal: string;
 }
 
+const houseColors: { [key: string]: string } = {
+  gryffindor: 'linear-gradient(to right, #740001 0%, #c79106 100%)',
+  slytherin: 'linear-gradient(to right, #1a472a 0%, #d3d3d3 100%)',
+  ravenclaw: 'linear-gradient(to right, #0e1a40 0%, #955104 100%)',
+  hufflepuff: 'linear-gradient(to right, #ecb939 0%, #070101 100%)',
+  // Add more houses as needed
+};
+
 const getGradientStyle = (name: string): string => {
-  switch (name.toLowerCase()) {
-    case 'gryffindor':
-      return 'linear-gradient(to right, #740001 0%, #c79106 100%)';
-    case 'slytherin':
-      return 'linear-gradient(to right, #1a472a 0%, #d3d3d3 100%)';
-    case 'ravenclaw':
-      return 'linear-gradient(to right, #0e1a40 0%, #955104 100%)';
-    case 'hufflepuff':
-      return 'linear-gradient(to right, #ecb939 0%, #070101 100%)';
-    default:
-      return 'linear-gradient(to right, white 0%, rgb(10, 9, 9) 100%)';
-  }
+  return (
+    houseColors[name.toLowerCase()] ||
+    'linear-gradient(to right, white 0%, rgb(10, 9, 9) 100%)'
+  );
 };
 
 const HouseCardContainer = styled.div`
