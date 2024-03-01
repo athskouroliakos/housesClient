@@ -13,7 +13,7 @@ interface House {
 
 const HousesList: React.FC<{ name?: string }> = ({ name }) => {
   const [houses, setHouses] = useState<House[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [isloading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,18 +27,16 @@ const HousesList: React.FC<{ name?: string }> = ({ name }) => {
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
-        setLoading(false);
+        setIsLoading(false);
       }
     };
 
     fetchData();
   }, [name]);
 
-
-
   return (
     <div>
-      {loading ? (
+      {isloading ? (
         <Spinner />
       ) : (
         houses.map((house) => <HouseCard key={house.id} {...house} />)
