@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { HouseColors, houseColors } from '../utils/colors';
+import { getGradientStyle } from '../utils/colors';
 
 interface HouseCardProps {
   name: string;
@@ -8,19 +8,6 @@ interface HouseCardProps {
   founder: string;
   animal: string;
 }
-
-const defaultGradient =
-  'linear-gradient(to right, white 0%, rgb(10, 9, 9) 100%)';
-
-const getGradientStyle = (name: string): string => {
-  const lowerCaseName = name.toLowerCase();
-  if (lowerCaseName in houseColors) {
-    return houseColors[lowerCaseName];
-  } else {
-    console.error(`Houses with undefined colors: ${name}`);
-    return defaultGradient;
-  }
-};
 
 const HouseCardContainer = styled.div`
   position: relative;
@@ -54,12 +41,7 @@ const FounderContainer = styled.div`
   }
 `;
 
-const HouseCard: React.FC<HouseCardProps> = ({
-  name,
-  color,
-  founder,
-  animal,
-}) => {
+const HouseCard: React.FC<HouseCardProps> = ({ name, founder, animal }) => {
   return (
     <HouseCardContainer>
       <Animal>{animal}</Animal>

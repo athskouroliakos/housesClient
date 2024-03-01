@@ -35,13 +35,15 @@ const HousesList: React.FC<{ name?: string }> = ({ name }) => {
   }, [name]);
 
   return (
-    <div>
-      {isloading ? (
-        <Spinner />
-      ) : (
-        houses.map((house) => <HouseCard key={house.id} {...house} />)
-      )}
-    </div>
+    <>
+      <div>
+        {isloading ? (
+          <Spinner />
+        ) : (
+          houses.map((house) => <HouseCard key={house?.id} {...house} />)
+        )}
+      </div>
+    </>
   );
 };
 
