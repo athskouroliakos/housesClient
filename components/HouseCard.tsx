@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { HouseColors, houseColors } from '../helpers/colors';
+import { HouseColors, houseColors } from '../utils/colors';
 
 interface HouseCardProps {
   name: string;
