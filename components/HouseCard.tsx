@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { HouseColors, houseColors } from '../helpers/colors';
 
 interface HouseCardProps {
   name: string;
@@ -8,19 +9,17 @@ interface HouseCardProps {
   animal: string;
 }
 
-const houseColors: { [key: string]: string } = {
-  gryffindor: 'linear-gradient(to right, #740001 0%, #c79106 100%)',
-  slytherin: 'linear-gradient(to right, #1a472a 0%, #d3d3d3 100%)',
-  ravenclaw: 'linear-gradient(to right, #0e1a40 0%, #955104 100%)',
-  hufflepuff: 'linear-gradient(to right, #ecb939 0%, #070101 100%)',
-  // Add more houses as needed
-};
+const defaultGradient =
+  'linear-gradient(to right, white 0%, rgb(10, 9, 9) 100%)';
 
 const getGradientStyle = (name: string): string => {
-  return (
-    houseColors[name.toLowerCase()] ||
-    'linear-gradient(to right, white 0%, rgb(10, 9, 9) 100%)'
-  );
+  const lowerCaseName = name.toLowerCase();
+  if (lowerCaseName in houseColors) {
+    return houseColors[lowerCaseName];
+  } else {
+    console.error(`Invalid house name: ${name}`);
+    return defaultGradient;
+  }
 };
 
 const HouseCardContainer = styled.div`
@@ -48,7 +47,6 @@ const GradientBar = styled.div<{ name: string }>`
 const FounderContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 30px;
 
   p {
     margin: 0;
