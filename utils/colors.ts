@@ -18,7 +18,7 @@ export const getGradientStyle = (name: string): string => {
   if (lowerCaseName in houseColors) {
     return houseColors[lowerCaseName];
   } else {
-    console.error(`Houses with undefined colors: ${name}`);
+    console.error(`Houses with undefined colors: ${name}`); // Here we handle the case where a house doesn't have a color assigned to it.
     return defaultGradient;
   }
 };
